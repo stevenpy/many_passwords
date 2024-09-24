@@ -1,5 +1,7 @@
-<h1>My Passwords</h1>
-<%= @password.url %>
+<h1><%= @password.url %></h1>
+<%= link_to "Edit password", edit_password_path %>
 
-<%= @password.username %>
-<%= @password.password %>
+<h6>Username / Email</h6>
+<pre class="mt-0"><code><%= @password.username %></code></pre>
+<h6>Password</h6>
+<pre class="mt-0"><code><%= @password.password %></code></pre>
