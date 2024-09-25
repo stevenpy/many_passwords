@@ -21,7 +21,7 @@ class PasswordsController < ApplicationController
       redirect_to @password
     else
       render :edit, status: :unprocessable_entity
-   end
+    end
   end
 
   def create
