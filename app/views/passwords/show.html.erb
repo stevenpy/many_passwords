@@ -1,3 +1,4 @@
+<%= link_to "← Back", root_path, class: "block mb-4 no-underline" %>
 <div class="mb-4 flex justify-between items-center">
   <h1 class="mb-0">
     <%= @password.url %>
@@ -9,6 +10,7 @@
   </h1>
   <%= link_to "Edit", edit_password_path %>
 </div>
+<h3>Credentials</h3>
 <h6 class="py-2">Username / Email</h6>
 <div class="flex items-center gap-1">
   <pre class="my-0 flex-grow"><code><%= @password.username %></code></pre>
@@ -18,4 +20,8 @@
 <div class="flex items-center gap-1">
   <pre class="my-0 flex-grow"><code><%= @password.password %></code></pre>
   <%= button_tag "Copy", class: "px-4 py-2.5 bg-gray-200 rounded", data: {controller: "clipboard", action: "click->clipboard#copy", clipboard_content_value: @password.password } %>
+</div>
+<h3>Share</h3>
+<div class="flex gap-2">
+  <%= link_to "Add user", new_password_share_path(@password) %>
 </div>
