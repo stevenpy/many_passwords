@@ -8,7 +8,7 @@
       </svg>
     <% end %>
   </h1>
-  <%= link_to "Edit", edit_password_path %>
+  <%= link_to "Edit", edit_password_path(@password) if @password.is_editable_by?(current_user) %>
 </div>
 <h3>Credentials</h3>
 <h6 class="py-2">Username / Email</h6>
@@ -21,14 +21,14 @@
   <pre class="my-0 flex-grow"><code><%= @password.password %></code></pre>
   <%= button_tag "Copy", class: "px-4 py-2.5 bg-gray-200 rounded", data: {controller: "clipboard", action: "click->clipboard#copy", clipboard_content_value: @password.password } %>
 </div>
-<h3>Share</h3>
+<h3>Shared With</h3>
 <div class="flex flex-col gap-2 divide-y divide-gray-100">
-  <%= link_to "Add user", new_password_share_path(@password), class: "no-underline" %>
+  <%= link_to "Add user", new_password_share_path(@password), class: "no-underline" if @password.is_shareable_by?(current_user) %>
   <% @password.user_passwords.includes(:user).each do |user_password| %>
     <div class="flex justify-between items-center">
       <div><%= user_password.user.email %></div>
       <div><%= user_password.role.titleize %></div>
-      <%= button_to "Remove", password_share_path(@password, user_password.user), method: :delete, data: {turbo_confirm: "Are you sure?"} %>
+      <%= button_to "Remove", password_share_path(@password, user_password.user), method: :delete, data: {turbo_confirm: "Are you sure?"} if @password.is_shareable_by?(current_user) %>
     </div>
   <% end %>
 </div>
