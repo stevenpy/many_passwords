@@ -25,8 +25,9 @@ class PasswordsController < ApplicationController
   end
 
   def create
-    @password = current_user.passwords.create(password_params)
-    if @password.persisted?
+    @password = Password.new
+    @password.user_passwords(user: current_user, role: :owner)
+    if @password.save
       redirect_to @password
     else
       render :new, status: :unprocessable_entity

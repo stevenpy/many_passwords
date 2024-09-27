@@ -5,6 +5,10 @@
     <%= form.collection_select :user_id, @users, :id, :email %>
   </div>
   <div>
+    <%= form.label :role %>
+    <%= form.select :role, UserPassword::ROLES %>
+  </div>
+  <div>
     <%= form.submit "Share" %>
   </div>
  <% end %>
