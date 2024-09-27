@@ -26,7 +26,7 @@ class PasswordsController < ApplicationController
 
   def create
     @password = Password.new(password_params)
-    @password.user_passwords(user: current_user, role: :owner)
+    @password.user_passwords.new(user: current_user, role: :owner)
     if @password.save
       redirect_to @password
     else
