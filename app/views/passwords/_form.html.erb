@@ -20,7 +20,7 @@
   </div>
   <div>
     <%= form.submit %>
-    <%= button_tag "Delete", form: "delete_password" if password.is_deletable_by?(current_user) %>
+    <%= button_tag "Delete", form: "delete_password" if form.object.persisted? && @password.is_deletable_by?(current_user) %>
   </div>
 <% end %>
 
