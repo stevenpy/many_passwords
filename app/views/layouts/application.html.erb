@@ -10,6 +10,12 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
-    <%= render "shared/navbar" %>
+    <main class="container mx-auto">
+      <div class="prose max-w-none px-5">
+        <%= render "shared/flash" %>
+        <%= render "shared/navbar" %>
+        <%= yield %>
+      </div>
+    </main>
   </body>
 </html>

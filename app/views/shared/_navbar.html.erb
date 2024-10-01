@@ -1,24 +1,17 @@
-<main class="container mx-auto">
-  <div class="prose max-w-none px-5">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <nav class="flex justify-between">
-      <div class="flex items-center gap-2">
-        <%= link_to "ManyPassword", root_path, class: "text-xl font-bold no-underline" %>
-        <ul class="list-none flex gap-2">
-          <li><%= link_to "Home", root_path %>
-          </ul>
-        </div>
-        <ul class="list-none flex items-center gap-2">
-          <% if user_signed_in? %>
-            <li><%= link_to "Profile", edit_user_registration_path %></li>
-            <li><%= button_to "Logout", destroy_user_session_path, method: :delete %></li>
-          <% else %>
-            <li><%= link_to "Login", new_user_session_path %></li>
-            <li><%= link_to "Sign up", new_user_registration_path %></li>
-          <% end %>
-        </ul>
-      </nav>
-      <%= yield %>
-    </div>
-  </main>
+<nav class="flex justify-between">
+  <div class="flex items-center gap-2">
+    <%= link_to "ManyPassword", root_path, class: "text-xl font-bold no-underline" %>
+    <ul class="list-none flex gap-2">
+      <li><%= link_to "Home", root_path %>
+    </ul>
+  </div>
+  <ul class="list-none flex items-center gap-2">
+    <% if user_signed_in? %>
+      <li><%= link_to "Profile", edit_user_registration_path %></li>
+      <li><%= button_to "Logout", destroy_user_session_path, method: :delete %></li>
+    <% else %>
+      <li><%= link_to "Login", new_user_session_path %></li>
+      <li><%= link_to "Sign up", new_user_registration_path %></li>
+    <% end %>
+  </ul>
+</nav>
