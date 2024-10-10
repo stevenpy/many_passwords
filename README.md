@@ -17,6 +17,7 @@ ManyPassword is a robust, user-friendly password manager designed to keep your d
 - Ruby 3.3.0 or higher
 - Rails 7.0.0 or higher
 - PostgreSQL
+- TailwindCSS
 
 ### Installation
 
